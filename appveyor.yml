@@ -11,13 +11,13 @@ environment:
       PYTHON_VERSION: "3.5.0"
       PYTHON_ARCH: "32"
       PYWIN_URL: "https://sourceforge.net/projects/pywin32/files/pywin32/Build%20221/pywin32-221.win32-py3.5.exe"
-      PYWIN_URL2: "http://www.lfd.uci.edu/~gohlke/pythonlibs/ru4fxw3r/pywin32-221-cp35-cp35m-win32.whl"
+      PYWIN_URL2: "https://github.com/phlummox/python-appveyor-demo/releases/download/v0.1/pywin32-221-cp35-cp35m-win32.whl"
 
     - PYTHON: "C:\\Python35-x64"
       PYTHON_VERSION: "3.5.0"
       PYTHON_ARCH: "64"
       PYWIN_URL: "https://sourceforge.net/projects/pywin32/files/pywin32/Build%20221/pywin32-221.win-amd64-py3.5.exe"
-      PYWIN_URL2: "http://www.lfd.uci.edu/~gohlke/pythonlibs/ru4fxw3r/pywin32-221-cp35-cp35m-win_amd64.whl"
+      PYWIN_URL2: "https://github.com/phlummox/python-appveyor-demo/releases/download/v0.1/pywin32-221-cp35-cp35m-win_amd64.whl"
 
 install:
   # If there is a newer build queued for the same PR, cancel this one.
