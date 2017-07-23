@@ -59,8 +59,8 @@ install:
   # Install pywin32 & pyinstaller
   - 'ECHO Downloading %PYWIN_URL%'
   - ps: (new-object net.webclient).DownloadFile("$env:PYWIN_URL", 'C:\pywin_inst.exe')
-  - ps: (new-object net.webclient).DownloadFile("$env:PYWIN_URL2", "$env:PYWIN_NAME")
-  - "pip install C:\\*.whl"
+  - ps: (new-object net.webclient).DownloadFile("$env:PYWIN_URL2", "C:\$env:PYWIN_NAME")
+  - "pip install C:\$env:PYWIN_NAME"
   #- cmd: "%PYTHON%\\Scripts\\easy_install.exe C:\\pywin_inst.exe"
   #- cmd: "pip install pyinstaller"
 
