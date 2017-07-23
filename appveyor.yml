@@ -7,21 +7,15 @@ environment:
 
   matrix:
 
-    - PYTHON: "C:\\Python33"
-      PYTHON_VERSION: "3.3.x" # currently 3.3.5
-      PYTHON_ARCH: "32"
-
-    - PYTHON: "C:\\Python33-x64"
-      PYTHON_VERSION: "3.3.x" # currently 3.3.5
-      PYTHON_ARCH: "64"
-
     - PYTHON: "C:\\Python35"
       PYTHON_VERSION: "3.5.0"
       PYTHON_ARCH: "32"
+      PYWIN_URL: "https://sourceforge.net/projects/pywin32/files/pywin32/Build%20221/pywin32-221.win32-py3.5.exe"
 
     - PYTHON: "C:\\Python35-x64"
       PYTHON_VERSION: "3.5.0"
       PYTHON_ARCH: "64"
+      PYWIN_URL: "https://sourceforge.net/projects/pywin32/files/pywin32/Build%20221/pywin32-221.win-amd64-py3.5.exe"
 
 install:
   # If there is a newer build queued for the same PR, cancel this one.
@@ -55,6 +49,12 @@ install:
   # Upgrade to the latest version of pip to avoid it displaying warnings
   # about it being out of date.
   - "pip install --disable-pip-version-check --user --upgrade pip"
+
+  # Install pywin32 & pyinstaller
+  - 'ECHO Downloading %PYWIN_DL%'
+  - ps: (new-object net.webclient).DownloadFile("$env:PYWIN_DL", 'C:/pywin_inst.exe')
+  - "%PYTHON%/Scripts/easy_install.exe C:/pywin_inst.exe"
+  - "pip install pyinstaller"
 
   # Install the build dependencies of the project. If some dependencies contain
   # compiled extensions and are not provided as pre-built wheel packages,
