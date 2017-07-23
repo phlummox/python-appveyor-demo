@@ -11,11 +11,13 @@ environment:
       PYTHON_VERSION: "3.5.0"
       PYTHON_ARCH: "32"
       PYWIN_URL: "https://sourceforge.net/projects/pywin32/files/pywin32/Build%20221/pywin32-221.win32-py3.5.exe"
+      PYWIN_URL2: "http://www.lfd.uci.edu/~gohlke/pythonlibs/ru4fxw3r/pywin32-221-cp35-cp35m-win32.whl"
 
     - PYTHON: "C:\\Python35-x64"
       PYTHON_VERSION: "3.5.0"
       PYTHON_ARCH: "64"
       PYWIN_URL: "https://sourceforge.net/projects/pywin32/files/pywin32/Build%20221/pywin32-221.win-amd64-py3.5.exe"
+      PYWIN_URL2: "http://www.lfd.uci.edu/~gohlke/pythonlibs/ru4fxw3r/pywin32-221-cp35-cp35m-win_amd64.whl"
 
 install:
   # If there is a newer build queued for the same PR, cancel this one.
@@ -55,7 +57,8 @@ install:
   # Install pywin32 & pyinstaller
   - 'ECHO Downloading %PYWIN_URL%'
   - ps: (new-object net.webclient).DownloadFile("$env:PYWIN_URL", 'C:\pywin_inst.exe')
-  - "pip install C:/pywin_inst.exe"
+  - ps: (new-object net.webclient).DownloadFile("$env:PYWIN_URL2", 'C:\pywin.whl')
+  - "pip install C:\\pywin.whl"
   #- cmd: "%PYTHON%\\Scripts\\easy_install.exe C:\\pywin_inst.exe"
   #- cmd: "pip install pyinstaller"
 
