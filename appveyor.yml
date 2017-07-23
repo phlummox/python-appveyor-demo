@@ -50,10 +50,12 @@ install:
   # about it being out of date.
   - "pip install --disable-pip-version-check --user --upgrade pip"
 
+  - "pip install wheel"
+
   # Install pywin32 & pyinstaller
   - 'ECHO Downloading %PYWIN_URL%'
   - ps: (new-object net.webclient).DownloadFile("$env:PYWIN_URL", 'C:\pywin_inst.exe')
-  - cmd: "C:\\pywin_inst.exe"
+  - "pip install C:\\pywin_inst.exe"
   #- cmd: "%PYTHON%\\Scripts\\easy_install.exe C:\\pywin_inst.exe"
   #- cmd: "pip install pyinstaller"
 
