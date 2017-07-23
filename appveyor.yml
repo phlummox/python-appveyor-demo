@@ -61,8 +61,9 @@ install:
   - ps: (new-object net.webclient).DownloadFile("$env:PYWIN_URL", 'C:\pywin_inst.exe')
   - ps: (new-object net.webclient).DownloadFile("$env:PYWIN_URL2", "C:\$env:PYWIN_NAME")
   - ps: "pip install C:\\$env:PYWIN_NAME"
+
   #- cmd: "%PYTHON%\\Scripts\\easy_install.exe C:\\pywin_inst.exe"
-  #- cmd: "pip install pyinstaller"
+  - cmd: "pyinstaller --version"
 
   # Install the build dependencies of the project. If some dependencies contain
   # compiled extensions and are not provided as pre-built wheel packages,
@@ -73,6 +74,7 @@ install:
 build_script:
   # Build the compiled extension
   - "%CMD_IN_ENV% python setup.py build"
+  - "%CMD_IN_ENV% pyinstaller -F test.py"
 
 test_script:
   # Run the project tests
