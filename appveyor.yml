@@ -60,7 +60,7 @@ install:
   - 'ECHO Downloading %PYWIN_URL%'
   - ps: (new-object net.webclient).DownloadFile("$env:PYWIN_URL", 'C:\pywin_inst.exe')
   - ps: (new-object net.webclient).DownloadFile("$env:PYWIN_URL2", "$env:PYWIN_NAME")
-  - "pip install C:\\pywin.whl"
+  - "pip install C:\\*.whl"
   #- cmd: "%PYTHON%\\Scripts\\easy_install.exe C:\\pywin_inst.exe"
   #- cmd: "pip install pyinstaller"
 
